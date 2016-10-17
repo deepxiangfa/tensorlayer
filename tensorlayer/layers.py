@@ -1320,6 +1320,14 @@ class BatchNormLayer(Layer):
               mean_var_with_update,
               lambda: (ema.average(batch_mean), ema.average(batch_var))
             )
+            if is_train:
+                print("train")
+                print mean
+                print var
+            else:
+                print("test")
+                print mean
+                print var
             normed = tf.nn.batch_normalization(
               x=self.inputs,
               mean=mean,
